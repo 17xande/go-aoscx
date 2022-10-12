@@ -1,5 +1,6 @@
 # go-aoscx
 Go library and CLI app for interacting with the Aruba AOS-CX API.
+Currently, only v1 of the API is supported.
 
 ## CLI Usage:
 ```bash
@@ -18,4 +19,12 @@ This project is in Alpha.
 Contributions are welcome.
 
 ### References
-[HPE ArubaOS-Switch REST API andJSON Schema Reference Guide 16.03Part Number: 5200-2937Published: January 2017Edition: 1](https://support.hpe.com/hpesc/public/docDisplay?docLocale=en_US&docId=emr_na-c05373669)
+**API v1:** [HPE ArubaOS-Switch REST API andJSON Schema Reference Guide 16.03Part Number: 5200-2937Published: January 2017Edition: 1]  (https://support.hpe.com/hpesc/public/docDisplay?docLocale=en_US&docId=emr_na-c05373669)  
+**API v10.04** [ArubaOS-CX 10.05 REST v10.04 API Guide](https://www.arubanetworks.com/techdocs/AOS-CX/10.05/HTML/5200-7320/index.html)
+
+## TODO:
+- [ ] Add other v1 functions
+- [ ] Allow option for HTTPS (and default to HTTPS)
+- [ ] Add authentication/session support
+- [ ] Add API v10.04 support (for AOS-CX)
+  - [ ] Support both API versions
