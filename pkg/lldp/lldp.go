@@ -8,8 +8,8 @@ import (
 )
 
 func GetGlobalStatus(ip string) {
-	url := fmt.Sprintf(request.UrlAPI, ip, "lldp")
-	lldp, err := request.Get(url)
+	r := request.New(ip, "lldp")
+	lldp, err := r.Get()
 	if err != nil {
 		fmt.Printf("can't get LLDP Global Status: %v\n", err)
 		os.Exit(1)
@@ -19,8 +19,8 @@ func GetGlobalStatus(ip string) {
 }
 
 func GetLocalPorts(ip string) {
-	url := fmt.Sprintf(request.UrlAPI, ip, "lldp/local-port")
-	lldp, err := request.Get(url)
+	r := request.New(ip, "lldp/local-port")
+	lldp, err := r.Get()
 	if err != nil {
 		fmt.Printf("can't get LLDP local ports config: %v\n", err)
 		os.Exit(1)
@@ -30,8 +30,8 @@ func GetLocalPorts(ip string) {
 }
 
 func GetLocalPort(ip string, ID int) {
-	url := fmt.Sprintf(request.UrlAPI, ip, "lldp/local-port/"+fmt.Sprint(ID))
-	lldp, err := request.Get(url)
+	r := request.New(ip, "lldp/local-port/"+fmt.Sprint(ID))
+	lldp, err := r.Get()
 	if err != nil {
 		fmt.Printf("can't get LLDP local port config: %v\n", err)
 		os.Exit(1)

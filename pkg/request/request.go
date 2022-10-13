@@ -9,9 +9,30 @@ import (
 )
 
 // Eg: http://192.168.0.1/rest/v1/
-const UrlAPI = "http://%s/rest/v1/%s"
+const UrlAPI = "%s://%s/rest/%s/%s"
 
-func Get(url string) (string, error) {
+type Request struct {
+	Protocol   string
+	IP         string
+	APIVersion string
+	Path       string
+}
+
+func New(ip, path string) *Request {
+	return &Request{
+		Protocol:   "http",
+		IP:         ip,
+		APIVersion: "v8",
+		Path:       path,
+	}
+}
+
+func (r *Request) genUrl() string {
+	return fmt.Sprintf(UrlAPI, r.Protocol, r.IP, r.APIVersion, r.Path)
+}
+
+func (r *Request) Get() (string, error) {
+	url := r.genUrl()
 	req, err := http.NewRequest(http.MethodGet, url, nil)
 	if err != nil {
 		return "", fmt.Errorf("can't create get request: %w", err)

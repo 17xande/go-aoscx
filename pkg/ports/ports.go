@@ -8,8 +8,8 @@ import (
 )
 
 func GetAll(ip string) {
-	url := fmt.Sprintf(request.UrlAPI, ip, "ports")
-	ports, err := request.Get(url)
+	r := request.New(ip, "ports")
+	ports, err := r.Get()
 	if err != nil {
 		fmt.Printf("can't get all ports: %v\n", err)
 		os.Exit(1)
@@ -19,8 +19,8 @@ func GetAll(ip string) {
 }
 
 func Get(ip string, ID int) {
-	url := fmt.Sprintf(request.UrlAPI, ip, "ports/"+fmt.Sprint(ID))
-	ports, err := request.Get(url)
+	r := request.New(ip, "ports/"+fmt.Sprint(ID))
+	ports, err := r.Get()
 	if err != nil {
 		fmt.Printf("can't get all ports: %v\n", err)
 		os.Exit(1)

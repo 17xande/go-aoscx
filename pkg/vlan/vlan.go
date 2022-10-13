@@ -8,8 +8,8 @@ import (
 )
 
 func GetAll(ip string) {
-	url := fmt.Sprintf(request.UrlAPI, ip, "vlans")
-	vlans, err := request.Get(url)
+	r := request.New(ip, "vlans")
+	vlans, err := r.Get()
 	if err != nil {
 		fmt.Printf("can't get vlans: %v\n", err)
 		os.Exit(1)

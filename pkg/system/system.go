@@ -8,8 +8,8 @@ import (
 )
 
 func Get(ip string) {
-	url := fmt.Sprintf(request.UrlAPI, ip, "system")
-	system, err := request.Get(url)
+	r := request.New(ip, "system")
+	system, err := r.Get()
 	if err != nil {
 		fmt.Printf("can't get system summary: %v\n", err)
 		os.Exit(1)
@@ -19,8 +19,8 @@ func Get(ip string) {
 }
 
 func GetStatus(ip string) {
-	url := fmt.Sprintf(request.UrlAPI, ip, "system/status")
-	system, err := request.Get(url)
+	r := request.New(ip, "system/status")
+	system, err := r.Get()
 	if err != nil {
 		fmt.Printf("can't get system status: %v\n", err)
 		os.Exit(1)
@@ -30,8 +30,8 @@ func GetStatus(ip string) {
 }
 
 func GetCPU(ip string) {
-	url := fmt.Sprintf(request.UrlAPI, ip, "system/status/cpu")
-	system, err := request.Get(url)
+	r := request.New(ip, "system/status/cpu")
+	system, err := r.Get()
 	if err != nil {
 		fmt.Printf("can't get system status cpu: %v\n", err)
 		os.Exit(1)
@@ -41,8 +41,8 @@ func GetCPU(ip string) {
 }
 
 func GetMemory(ip string) {
-	url := fmt.Sprintf(request.UrlAPI, ip, "system/status/memory")
-	system, err := request.Get(url)
+	r := request.New(ip, "system/status/memory")
+	system, err := r.Get()
 	if err != nil {
 		fmt.Printf("can't get system status memory: %v\n", err)
 		os.Exit(1)
