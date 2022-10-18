@@ -9,6 +9,7 @@ import (
 	"github.com/17xande/go-aoscx/pkg/ipRoute"
 	"github.com/17xande/go-aoscx/pkg/lldp"
 	"github.com/17xande/go-aoscx/pkg/ports"
+	"github.com/17xande/go-aoscx/pkg/raw"
 	"github.com/17xande/go-aoscx/pkg/system"
 	"github.com/17xande/go-aoscx/pkg/vlan"
 )
@@ -46,6 +47,14 @@ func main() {
 
 		portID := getTailInt(flag.Args())
 		ports.Get(*ip, portID)
+	case "raw":
+		if len(flag.Args()) == 0 {
+			fmt.Println("no path provided")
+			os.Exit(1)
+		}
+
+		path := flag.Args()[0]
+		raw.Get(*ip, path)
 	case "system":
 		system.Get(*ip)
 	case "systemStatus":
