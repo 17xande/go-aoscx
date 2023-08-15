@@ -15,7 +15,7 @@ import (
 )
 
 func main() {
-	ip := flag.String("ip", "", "the switche's IP address.")
+	ip := flag.String("ip", "", "the switch's IP address.")
 	command := flag.String("command", "", "a command.")
 	flag.Parse()
 
